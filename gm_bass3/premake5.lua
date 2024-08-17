@@ -46,7 +46,7 @@ CreateWorkspace({name = "bass3", abi_compatible = false})
         })
 
 		includedirs({
-			[["libs/"]]
+			"libs/"
 		})
 
 		filter("system:windows")
