@@ -9,13 +9,13 @@ class TEffectParamEQ : public TEffect
 	GETSETLIMIT(float, fGain, Gain, 0, -15, 15);
 
 protected:
-	atomic<float> fCenter = { 80 };
+	std::atomic<float> fCenter = { 80 };
 
 	BASS_DX8_PARAMEQ* pData = NULL;
 	void* GetData();
 
 public:
-	static string LUAMETANAME;
+	static std::string LUAMETANAME;
 	static int LUAMETAID;
 
 	TEffectParamEQ();
@@ -24,9 +24,9 @@ public:
 	float GetCenter();
 	void SetCenter(float fCenter);
 
-	string ToString();
-	operator string();
+	std::string ToString();
+	operator std::string();
 
-	friend ostream& operator<<(ostream& os, TEffectParamEQ& FX);
+	friend std::ostream& operator<<(std::ostream& os, TEffectParamEQ& FX);
 };
 #endif

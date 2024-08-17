@@ -4,6 +4,8 @@
 
 #include "flag.hpp"
 
+using namespace std;
+
 namespace FLAG
 {
 	bass_flag GetPlayFlags(unsigned int iLuaFlag, bool& bNoPlay)

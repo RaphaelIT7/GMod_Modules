@@ -1,5 +1,7 @@
 #include "teffectdistortion.hpp"
 
+using namespace std;
+
 string TEffectDistortion::LUAMETANAME = "IBASS3FxDistortion";
 int TEffectDistortion::LUAMETAID = 0;
 

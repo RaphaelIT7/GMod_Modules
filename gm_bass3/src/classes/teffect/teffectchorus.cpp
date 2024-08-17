@@ -1,5 +1,7 @@
 #include "teffectchorus.hpp"
 
+using namespace std;
+
 string TEffectChorus::LUAMETANAME = "IBASS3FxChorus";
 int TEffectChorus::LUAMETAID = 0;
 

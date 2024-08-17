@@ -1,5 +1,7 @@
 #include "teffect.hpp"
 
+using namespace std;
+
 string TEffect::LUAMETANAME = "IBASS3Fx";
 int TEffect::LUAMETAID = 0;
 

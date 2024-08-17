@@ -18,7 +18,7 @@ protected:
 	// +--------------------------------------------------+
 	// |               Protected Variables                |
 	// +--------------------------------------------------+
-	mutex MutexLock;
+	std::mutex MutexLock;
 	bool bIsRemoved = false;
 	unsigned long long id;
 
@@ -26,7 +26,7 @@ protected:
 	// |                Protected Methods                 |
 	// +--------------------------------------------------+
 public:
-	static string LUAMETANAME;
+	static std::string LUAMETANAME;
 	static int LUAMETAID;
 	static unsigned long long g_id;
 
@@ -49,13 +49,13 @@ public:
 	virtual const unsigned int GetReferences() const;
 	virtual const bool IsReferenced() const;
 
-	virtual string ToString();
-	virtual operator string();
+	virtual std::string ToString();
+	virtual operator std::string();
 	virtual bool operator ==(TLuaRefAble& other);
 
 	// +--------------------------------------------------+
 	// |                    Friends                       |
 	// +--------------------------------------------------+
-	friend ostream& operator<<(ostream& os, TLuaRefAble& OBJ);
+	friend std::ostream& operator<<(std::ostream& os, TLuaRefAble& OBJ);
 };
 #endif

@@ -3,10 +3,6 @@
 #ifndef TSyncList_H
 #define TSyncList_H
 
-
-
-using namespace std;
-
 template<class T> 
 class SyncList
 {
@@ -17,13 +13,13 @@ class SyncList
 	node *head;
 	node *tail;
 	int size;
-	mutex MutexLock;
+	std::mutex MutexLock;
 public:
 	SyncList(): size(0), head(NULL), tail(NULL) {};
 	~SyncList() {}
 	int getSize()
 	{
-		lock_guard<mutex> Lock(MutexLock);
+		std::lock_guard<std::mutex> Lock(MutexLock);
 		return size;
 	}
 
@@ -33,7 +29,7 @@ public:
 		b->next = NULL;
 		b->value = data;
 
-		lock_guard<mutex> Lock(MutexLock);
+		std::lock_guard<std::mutex> Lock(MutexLock);
 		if((head == NULL) || (head == nullptr))
 		{
 			head = b;
@@ -51,7 +47,7 @@ public:
 		node *tmp;
 
 		{ // Scope
-			lock_guard<mutex> Lock(MutexLock);
+			std::lock_guard<std::mutex> Lock(MutexLock);
 			if(head == NULL) return NULL;
 			if(head == nullptr) return NULL;
 

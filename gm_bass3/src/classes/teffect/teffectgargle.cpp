@@ -1,5 +1,7 @@
 #include "teffectgargle.hpp"
 
+using namespace std;
+
 string TEffectGargle::LUAMETANAME = "IBASS3FxGargle";
 int TEffectGargle::LUAMETAID = 0;
 

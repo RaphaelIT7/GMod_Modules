@@ -2,6 +2,7 @@
 #include "../util.hpp"
 #include "GarrysMod/Lua/Interface.h"
 #include "../classes/tchannel.hpp"
+#include <unordered_map>
 
 using namespace GarrysMod::Lua;
 
@@ -118,7 +119,7 @@ namespace LUAINTERFACE
 			return T::LUAMETAID;
 		}
 
-		template<class T> string GetTypeName()
+		template<class T> std::string GetTypeName()
 		{
 			return T::LUAMETANAME;
 		}

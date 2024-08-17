@@ -33,7 +33,7 @@
 
 
 
-#define GM_BASS_VERSION 14
+#define GM_BASS_VERSION 15
 
 #define META_IBASS3CHANNEL "IBASS3Channel"
 #define META_IBASS3FXECHO "IBASS3FxEcho"
@@ -92,7 +92,7 @@ struct TChannelCallbackData
 struct TChannelThreadArgs
 {
 	TChannel* pChannel;
-	string sURL;
+	std::string sURL;
 	bool bIsOnline;
 	bass_flag eFlags;
 	int iCallbackRef;
@@ -106,14 +106,14 @@ extern bool g_CLOSING;
 extern bool g_IntialTickHappend;
 extern int g_ChannelTypeID;
 
-extern thread* g_thCleanUp;
+extern std::thread* g_thCleanUp;
 extern SyncList<TChannelCallbackData *>* g_pListPendingCallbacks;
-extern SyncList<thread *>* g_pListRunningThreads;
+extern SyncList<std::thread *>* g_pListRunningThreads;
 extern float* g_pfFFTBuffer;
 extern char* g_pcErrorBuffer;
 
-extern string g_oldAgentSettings;
-extern string g_oldProxySettings;
+extern std::string g_oldAgentSettings;
+extern std::string g_oldProxySettings;
 
 #endif
 

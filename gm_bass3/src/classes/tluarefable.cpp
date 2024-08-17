@@ -1,5 +1,7 @@
 #include "tluarefable.hpp"
 
+using namespace std;
+
 string TLuaRefAble::LUAMETANAME = "IBASS3GenericObject";
 int TLuaRefAble::LUAMETAID = 0;
 unsigned long long TLuaRefAble::g_id = 0;

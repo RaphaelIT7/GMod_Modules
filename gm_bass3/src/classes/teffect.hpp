@@ -8,7 +8,7 @@
 
 #define GETSET(TYPE, VALUENAME, NAME, DEFAULT) \
 	private: \
-		atomic<TYPE> VALUENAME = { ( TYPE )( DEFAULT ) }; \
+		std::atomic<TYPE> VALUENAME = { ( TYPE )( DEFAULT ) }; \
 	public: \
 		TYPE Get##NAME() { \
 			return this->VALUENAME.load(); \
@@ -21,7 +21,7 @@
 
 #define GETSETLIMIT(TYPE, VALUENAME, NAME, DEFAULT, MINV, MAXV) \
 	private: \
-		atomic<TYPE> VALUENAME = { ( TYPE )( DEFAULT ) }; \
+		std::atomic<TYPE> VALUENAME = { ( TYPE )( DEFAULT ) }; \
 	public: \
 		TYPE Get##NAME() { \
 			return this->VALUENAME.load(); \
@@ -36,7 +36,7 @@
 
 #define GETSETLIMIT_WITH_NOCHANGE(TYPE, VALUENAME, NAME, DEFAULT, MINV, MAXV) \
 	private: \
-		atomic<TYPE> VALUENAME = { ( TYPE )( DEFAULT ) }; \
+		std::atomic<TYPE> VALUENAME = { ( TYPE )( DEFAULT ) }; \
 	public: \
 		TYPE Get##NAME() { \
 			return this->VALUENAME.load(); \
@@ -56,7 +56,7 @@
 
 #define GETSETBOOL(VALUENAME, NAME, DEFAULT) \
 	private: \
-		atomic<BOOL> VALUENAME = { ( BOOL )( DEFAULT ) }; \
+		std::atomic<BOOL> VALUENAME = { ( BOOL )( DEFAULT ) }; \
 	public: \
 		bool Get##NAME() { \
 			return ( BOOL )( this->VALUENAME.load() ) == ( BOOL )( TRUE ); \
@@ -92,7 +92,7 @@ protected:
 	void RemoveFX();
 
 public:
-	static string LUAMETANAME;
+	static std::string LUAMETANAME;
 	static int LUAMETAID;
 
 	TEffect();
@@ -112,17 +112,17 @@ public:
 	void SetEnabled(bool bEnabled);
 	const bool GetEnabled() const;
 
-	virtual string ToString();
-	virtual operator string();
+	virtual std::string ToString();
+	virtual operator std::string();
 
-	friend ostream& operator<<(ostream& os, TEffect& FX);
+	friend std::ostream& operator<<(std::ostream& os, TEffect& FX);
 };
 
 class TEffectTrait_Waveform_TS
 {
 
 protected:
-	atomic<bass_flag> eWaveform = { BASS_WAVEFORM_TRIANGLE };
+	std::atomic<bass_flag> eWaveform = { BASS_WAVEFORM_TRIANGLE };
 	bass_flag eWaveformDefault = BASS_WAVEFORM_TRIANGLE;
 
 public:
@@ -142,7 +142,7 @@ class TEffectTrait_Phase
 {
 
 protected:
-	atomic<bass_flag> ePhase = { BASS_DX8_PHASE_ZERO };
+	std::atomic<bass_flag> ePhase = { BASS_DX8_PHASE_ZERO };
 	bass_flag ePhaseDefault = BASS_DX8_PHASE_ZERO;
 
 public:
@@ -155,7 +155,7 @@ class TEffectTrait_Curve
 {
 
 protected:
-	atomic<bass_flag> eCurve = { BASS_CURVE_LINEAR };
+	std::atomic<bass_flag> eCurve = { BASS_CURVE_LINEAR };
 	bass_flag eCurveDefault = BASS_CURVE_LINEAR;
 
 public:

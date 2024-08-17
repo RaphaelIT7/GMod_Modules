@@ -1,5 +1,7 @@
 #include "teffectecho.hpp"
 
+using namespace std;
+
 string TEffectEcho::LUAMETANAME = "IBASS3FxEcho";
 int TEffectEcho::LUAMETAID = 0;
 

@@ -3,6 +3,8 @@
 #include "../bassfilesys.hpp"
 #include "../util.hpp"
 
+using namespace std;
+
 string TChannel::LUAMETANAME = "IBASS3Channel";
 int TChannel::LUAMETAID = 0;
 map<unsigned long long, TChannel*> TChannel::g_mapObjectInstances = map<unsigned long long, TChannel*>();

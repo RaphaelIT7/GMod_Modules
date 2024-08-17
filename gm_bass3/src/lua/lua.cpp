@@ -1,5 +1,7 @@
 #include "lua.hpp"
 
+using namespace std;
+
 namespace LUAINTERFACE
 {
 	bool g_ThinkError = false;
@@ -217,18 +219,14 @@ namespace LUAINTERFACE
 
 	void Dispose(ILuaBase* pLUA)
 	{
-		for (const auto &pair : TLuaTableContainer::g_mapTablesInstances) {
-			auto name = pair.first;
-			auto instance = pair.second;
+		for (const auto& [name, instance] : TLuaTableContainer::g_mapTablesInstances) {
 			if (ISNULLPTR(instance)) continue;
 
 			instance->Dispose(pLUA);
 			delete instance;
 		}
 
-		for (const auto &pair : TLuaObjectContainer::g_mapObjectInstances) {
-			auto name = pair.first;
-			auto instance = pair.second;
+		for (const auto& [name, instance] : TLuaObjectContainer::g_mapObjectInstances) {
 			if (ISNULLPTR(instance)) continue;
 
 			instance->Dispose(pLUA);

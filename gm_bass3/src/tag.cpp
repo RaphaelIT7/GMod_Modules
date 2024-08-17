@@ -7,6 +7,8 @@
 #include "util.hpp"
 #include "classes/tchannel.hpp"
 
+using namespace std;
+
 bool ReadMetaTag(string& sLine, unsigned int iCount, void *pUserData);
 bool GenericParseList(const char* pTagData, string& sSeperator, ILuaBase* pLUA);
 bool GenericParseList(const char* pTagData, const char* pSeperator, ILuaBase* pLUA);

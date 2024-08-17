@@ -1,0 +1,30 @@
+name: Build gm_bass3
+
+on: 
+  push:
+    paths:
+      - '.github/workflows/compile_bass3.yml'
+      - 'gm_bass3/**'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build_sv:
+    uses: RaphaelIT7/gmod-common-module-base/.github/workflows/compile.yml@workflow
+    with:
+      PROJECT_NAME: "bass3"
+      BUILD_64x: "true"
+      REALM: "sv"
+      BUILD_WINDOWS: "true"
+      ARTIFACT_EXPIRE: "1"
+      PROJECT_PATH: "gm_bass3/"
+
+  build_cl:
+    uses: RaphaelIT7/gmod-common-module-base/.github/workflows/compile.yml@workflow
+    with:
+      PROJECT_NAME: "bass3"
+      BUILD_64x: "true"
+      REALM: "cl"
+      BUILD_WINDOWS: "true"
+      ARTIFACT_EXPIRE: "1"
+      PROJECT_PATH: "gm_bass3/"

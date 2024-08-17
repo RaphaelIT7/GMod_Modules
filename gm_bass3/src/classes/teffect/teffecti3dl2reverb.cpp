@@ -1,5 +1,7 @@
 #include "teffecti3dl2reverb.hpp"
 
+using namespace std;
+
 string TEffectI3DL2Reverb::LUAMETANAME = "IBASS3FxI3DL2Reverb";
 int TEffectI3DL2Reverb::LUAMETAID = 0;
 

@@ -51,7 +51,7 @@ namespace LUAINTERFACE
 					return 1;
 				}
 
-				string sURL = string(pLUA->GetString(2));
+				std::string sURL = std::string(pLUA->GetString(2));
 
 				TChannelThreadArgs ThreadArgs;
 				ThreadArgs.bIsOnline = false;
@@ -96,7 +96,7 @@ namespace LUAINTERFACE
 					return 1;
 				}
 
-				string sURL = string(pLUA->GetString(2));
+				std::string sURL = std::string(pLUA->GetString(2));
 
 				TChannelThreadArgs ThreadArgs;
 				ThreadArgs.bIsOnline = true;

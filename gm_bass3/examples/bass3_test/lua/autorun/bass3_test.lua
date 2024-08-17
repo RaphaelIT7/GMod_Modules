@@ -31,6 +31,7 @@ if BASS3.Version < 2041308 then
 end
 
 local BASS3 = BASS3 or {}
+/* NOTE: The code below was broken when the registry got nuked.
 local _R = debug.getregistry( )
 
 local TmpR = {}
@@ -55,7 +56,7 @@ PrintTable( {
 	_R = TmpR
 } )
 
-TmpR = nil
+TmpR = nil*/
 
 local col1 = Color( 255, 255, 0 )
 local col2 = Color( 200, 200, 200 )

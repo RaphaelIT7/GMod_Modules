@@ -9,7 +9,7 @@ function TEST._( _, _, args )
 	local BASS3_ENUM = BASS3.ENUM or {}
 	local ENUM_TYPES = {}
 	local BASS3_TYPES = {}
-	local IBASS3Channel = _R.IBASS3Channel or {}
+	local IBASS3Channel = FindMetaTable("IBASS3Channel") or {}
 
 	for k, v in pairs( BASS3_ENUM ) do
 		local split = string.Split( k, "_" )

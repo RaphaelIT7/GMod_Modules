@@ -9,12 +9,12 @@ using namespace GarrysMod::Lua;
 int Init(ILuaBase* pLUA)
 {
 	g_pListPendingCallbacks = new SyncList<TChannelCallbackData *>;
-	g_pListRunningThreads = new SyncList<thread *>;
+	g_pListRunningThreads = new SyncList<std::thread *>;
 	g_pfFFTBuffer = new float[65536];
 
 	try
 	{
-		g_thCleanUp = new thread(thfnCleanUp);
+		g_thCleanUp = new std::thread(thfnCleanUp);
 	}
 	catch (...)
 	{
@@ -32,10 +32,6 @@ int Init(ILuaBase* pLUA)
 	try
 	{
 		BASS_Stop();
-
-#ifdef _WIN32
-		BASS_SetEAXParameters(EAX_PRESET_GENERIC);
-#endif
 
 		BASS_SetConfig(BASS_CONFIG_MF_VIDEO, TRUE);
 		BASS_SetConfig(BASS_CONFIG_NET_PLAYLIST, 2);
@@ -62,13 +58,13 @@ int Init(ILuaBase* pLUA)
 		cSettings = (char*)BASS_GetConfigPtr(BASS_CONFIG_NET_AGENT);
 		if(!ISNULLPTR(cSettings))
 		{
-			g_oldAgentSettings = string(cSettings);
+			g_oldAgentSettings = std::string(cSettings);
 		}
 
 		cSettings = (char*)BASS_GetConfigPtr(BASS_CONFIG_NET_PROXY);
 		if(!ISNULLPTR(cSettings))
 		{
-			g_oldProxySettings = string(cSettings);
+			g_oldProxySettings = std::string(cSettings);
 		}
 
 		BASS_Start();
@@ -149,28 +145,28 @@ GMOD_MODULE_OPEN()
 				return 0;
 			}
 		}
-		catch(const overflow_error& e)
+		catch(const std::overflow_error& e)
 		{
 			snprintf(g_pcErrorBuffer, ERROR_PUFFER_SIZE, "BASS Init failed, overflow_error exception: %s\n", e.what());
 			LUA->ThrowError(g_pcErrorBuffer);
 
 			return 0;
 		}
-		catch(const runtime_error& e)
+		catch(const std::runtime_error& e)
 		{
 			snprintf(g_pcErrorBuffer, ERROR_PUFFER_SIZE, "BASS Init failed, runtime_error exception: %s\n", e.what());
 			LUA->ThrowError(g_pcErrorBuffer);
 
 			return 0;
 		}
-		catch(const exception& e)
+		catch(const std::exception& e)
 		{
 			snprintf(g_pcErrorBuffer, ERROR_PUFFER_SIZE, "BASS Init failed, exception: %s\n", e.what());
 			LUA->ThrowError(g_pcErrorBuffer);
 
 			return 0;
 		}
-		catch(string s)
+		catch(std::string s)
 		{
 			snprintf(g_pcErrorBuffer, ERROR_PUFFER_SIZE, "BASS Init failed, exception: %s\n", s.c_str());
 			LUA->ThrowError(g_pcErrorBuffer);
@@ -247,9 +243,6 @@ GMOD_MODULE_CLOSE()
 
 	LUAINTERFACE::Dispose(LUA);
 
-#ifdef _WIN32
-	BASS_SetEAXParameters(EAX_PRESET_GENERIC);
-#endif
 	BASS_SetConfigPtr(BASS_CONFIG_NET_AGENT, g_oldAgentSettings.c_str());
 	BASS_SetConfigPtr(BASS_CONFIG_NET_PROXY, g_oldProxySettings.c_str());
 

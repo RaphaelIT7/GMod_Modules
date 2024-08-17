@@ -14,15 +14,15 @@ protected:
 	void* GetData();
 
 public:
-	static string LUAMETANAME;
+	static std::string LUAMETANAME;
 	static int LUAMETAID;
 
 	TEffectVolume();
 	~TEffectVolume();
 
-	string ToString();
-	operator string();
+	std::string ToString();
+	operator std::string();
 
-	friend ostream& operator<<(ostream& os, TEffectVolume& FX);
+	friend std::ostream& operator<<(std::ostream& os, TEffectVolume& FX);
 };
 #endif

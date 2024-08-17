@@ -1,5 +1,7 @@
 #include "teffectcompressor.hpp"
 
+using namespace std;
+
 string TEffectCompressor::LUAMETANAME = "IBASS3FxCompressor";
 int TEffectCompressor::LUAMETAID = 0;
 

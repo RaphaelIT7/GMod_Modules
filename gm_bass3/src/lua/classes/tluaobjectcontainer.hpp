@@ -10,15 +10,15 @@ namespace LUAINTERFACE
 	class TLuaObjectContainer
 	{
 	private:
-		string sName;
+		std::string sName;
 		int iTypeID = 0;
 
-		map<string, GarrysMod::Lua::CFunc> mapMethods;
-		map<string, GarrysMod::Lua::CFunc> mapMetaMethods;
+		std::map<std::string, GarrysMod::Lua::CFunc> mapMethods;
+		std::map<std::string, GarrysMod::Lua::CFunc> mapMetaMethods;
 
 	protected:
-		mutex MutexLock;
-		int Build(ILuaBase* pLUA, string name);
+		std::mutex MutexLock;
+		int Build(ILuaBase* pLUA, std::string name);
 
 		template<class T> void AddBaseMethods(ILuaBase* pLUA)
 		{
@@ -60,11 +60,11 @@ namespace LUAINTERFACE
 				LUAINTERFACE::HELPER::Check<T>(pLUA, 1);
 
 				T* pOBJ = LUAINTERFACE::HELPER::Get<T>(pLUA, 1);
-				string sOut = "";
+				std::string sOut = "";
 
 				if (ISNULLPTR(pOBJ))
 				{
-					sOut = string("[NULL") + T::LUAMETANAME + string("]");
+					sOut = std::string("[NULL") + T::LUAMETANAME + std::string("]");
 					pLUA->PushString(sOut.c_str());
 					return 1;
 				}
@@ -106,12 +106,12 @@ namespace LUAINTERFACE
 		}
 
 	public:
-		static map<string, TLuaObjectContainer*> g_mapObjectInstances;
+		static std::unordered_map<std::string, TLuaObjectContainer*> g_mapObjectInstances;
 
 		TLuaObjectContainer();
 		~TLuaObjectContainer();
 
-		void AddMethod(string name, GarrysMod::Lua::CFunc func);
+		void AddMethod(std::string name, GarrysMod::Lua::CFunc func);
 
 		virtual void Init(ILuaBase* pLUA);
 		virtual void Think(ILuaBase* pLUA);

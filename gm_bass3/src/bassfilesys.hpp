@@ -8,7 +8,7 @@
 namespace BASSFILESYS
 {
 	bool Init();
-	bool PlayFile(string& sFile, bass_flag eFlags, bass_p& pHandleOut, int& iErrOut);
+	bool PlayFile(std::string& sFile, bass_flag eFlags, bass_p& pHandleOut, int& iErrOut);
 }
 
 #endif

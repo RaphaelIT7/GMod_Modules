@@ -16,15 +16,15 @@ protected:
 	void* GetData();
 
 public:
-	static string LUAMETANAME;
+	static std::string LUAMETANAME;
 	static int LUAMETAID;
 
 	TEffectDistortion();
 	~TEffectDistortion();
 
-	string ToString();
-	operator string();
+	std::string ToString();
+	operator std::string();
 
-	friend ostream& operator<<(ostream& os, TEffectDistortion& FX);
+	friend std::ostream& operator<<(std::ostream& os, TEffectDistortion& FX);
 };
 #endif

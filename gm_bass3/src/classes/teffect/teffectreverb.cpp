@@ -1,5 +1,7 @@
 #include "teffectreverb.hpp"
 
+using namespace std;
+
 string TEffectReverb::LUAMETANAME = "IBASS3FxReverb";
 int TEffectReverb::LUAMETAID = 0;
 

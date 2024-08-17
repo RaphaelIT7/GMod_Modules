@@ -26,11 +26,11 @@ private:
 
 	bass_time iSeekingTo;
 
-	thread* pthSeeker;
-	string sFilename;
-	mutex MutexLoadingLock;
+	std::thread* pthSeeker;
+	std::string sFilename;
+	std::mutex MutexLoadingLock;
 
-	list<TEffect*> lsFX;
+	std::list<TEffect*> lsFX;
 
 	float fVolumeBoost;
 	float fVolume;
@@ -57,21 +57,21 @@ private:
 	bool HasFlag(bass_flag eFlag);
 	void SetFlag(bass_flag eF, bool bVar);
 
-	int LoadURL(string sURL, bass_flag eFlags);
-	int LoadFile(string sURL, bass_flag eFlags);
+	int LoadURL(std::string sURL, bass_flag eFlags);
+	int LoadFile(std::string sURL, bass_flag eFlags);
 
 
 public:
-	static string LUAMETANAME;
+	static std::string LUAMETANAME;
 	static int LUAMETAID;
-	static map<unsigned long long, TChannel*> g_mapObjectInstances;
+	static std::map<unsigned long long, TChannel*> g_mapObjectInstances;
 
 // +--------------------------------------------------+
 // |              Constructor/Destructor              |
 // +--------------------------------------------------+
 	TChannel();
-	TChannel(string sURL, bool bIsOnline, bass_flag eFlags);
-	TChannel(string sURL, bool bIsOnline);
+	TChannel(std::string sURL, bool bIsOnline, bass_flag eFlags);
+	TChannel(std::string sURL, bool bIsOnline);
 	~TChannel();
 	
 // +--------------------------------------------------+
@@ -85,8 +85,8 @@ public:
 	bool Update();
 	void Think();
 
-	int Load(string sURL, bool bIsOnline, bass_flag eFlags);
-	int Load(string sURL, bool bIsOnline);
+	int Load(std::string sURL, bool bIsOnline, bass_flag eFlags);
+	int Load(std::string sURL, bool bIsOnline);
 
 	void Play(bool bRestart);
 	void Play();
@@ -134,8 +134,8 @@ public:
 	bass_time GetSeekingTo();
 
 	const char* GetTag(bass_flag eMode);
-	string GetFileName();
-	string GetFileFormat();
+	std::string GetFileName();
+	std::string GetFileFormat();
 
 
 	DWORD GetSamplingRate();
@@ -172,8 +172,8 @@ public:
 	bool AddFx(TEffect* pFX);
 	void ClearFx();
 
-	string ToString();
-	operator string();
+	std::string ToString();
+	operator std::string();
 
 	operator bass_p();
 	bool operator ==(TChannel& other);
@@ -183,6 +183,6 @@ public:
 	// +--------------------------------------------------+
 	friend void thfnSeekTo(TChannel* pChannel);
 
-	friend ostream& operator<<(ostream& os, TChannel& Channel);
+	friend std::ostream& operator<<(std::ostream& os, TChannel& Channel);
 };
 #endif

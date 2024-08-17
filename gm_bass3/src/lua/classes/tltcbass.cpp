@@ -4,6 +4,8 @@
 #include "../../tag.hpp"
 #include "../../flag.hpp"
 
+using namespace std;
+
 namespace LUAINTERFACE
 {
 	TLTCBass::TLTCBass()
@@ -431,20 +433,10 @@ namespace LUAINTERFACE
 				float fDecay;
 				float fDamp;
 
-#ifdef _WIN32
-				if (BASS_GetEAXParameters(&iENV, &fVol, &fDecay, &fDamp) == FALSE)
-				{
-					iENV = BASS_NO_CHANGE;
-					fVol = BASS_NO_CHANGE;
-					fDecay = BASS_NO_CHANGE;
-					fDamp = BASS_NO_CHANGE;
-				}
-#else
 				iENV = BASS_NO_CHANGE;
 				fVol = BASS_NO_CHANGE;
 				fDecay = BASS_NO_CHANGE;
 				fDamp = BASS_NO_CHANGE;
-#endif
 
 				pLUA->PushNumber((iENV >= 0xFFFFFFFF || iENV == -1) ? (double)(BASS_NO_CHANGE) : (double)(iENV));
 				pLUA->PushNumber(fVol);
@@ -494,11 +486,7 @@ namespace LUAINTERFACE
 					if (fDamp < 0) fDecay = 0;
 				}
 
-#ifdef _WIN32
-				pLUA->PushBool(BASS_SetEAXParameters(iENV, fVol, fDecay, fDamp) != FALSE);
-#else
 				pLUA->PushBool(false);
-#endif
 				return 1;
 			});
 		}

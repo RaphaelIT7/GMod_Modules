@@ -1,5 +1,7 @@
 #include "teffectparameq.hpp"
 
+using namespace std;
+
 string TEffectParamEQ::LUAMETANAME = "IBASS3FxParamEQ";
 int TEffectParamEQ::LUAMETAID = 0;
 

@@ -1,8 +1,10 @@
 #include "tluatablecontainer.hpp"
 
+using namespace std;
+
 namespace LUAINTERFACE
 {
-	map<string, TLuaTableContainer*> TLuaTableContainer::g_mapTablesInstances = map<string, TLuaTableContainer*>();
+	unordered_map<string, TLuaTableContainer*> TLuaTableContainer::g_mapTablesInstances = unordered_map<string, TLuaTableContainer*>();
 
 	TLuaTableContainer::TLuaTableContainer()
 	{

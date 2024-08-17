@@ -1,5 +1,7 @@
 #include "teffectflanger.hpp"
 
+using namespace std;
+
 string TEffectFlanger::LUAMETANAME = "IBASS3FxFlanger";
 int TEffectFlanger::LUAMETAID = 0;
 

@@ -1,5 +1,7 @@
 #include "teffectvolume.hpp"
 
+using namespace std;
+
 string TEffectVolume::LUAMETANAME = "IBASS3FxVolume";
 int TEffectVolume::LUAMETAID = 0;
 

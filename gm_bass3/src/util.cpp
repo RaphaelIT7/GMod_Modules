@@ -11,6 +11,8 @@
 #include "classes/tchannel.hpp"
 #include "lua/lua.hpp"
 
+using namespace std;
+
 void thfnLoadStream(TChannelThreadArgs ThreadArgs)
 {
 	if(!g_IntialTickHappend) return;
@@ -66,7 +68,7 @@ void thfnCleanUp()
 		if(g_CLOSING) break;
 		i++;
 
-		this_thread::yield();
+		std::this_thread::yield();
 		SLEEP(100);
 	}
 
@@ -314,9 +316,9 @@ namespace UTIL
 		}
 	}
 
-	string DecodeBassError(int iCode)
+	std::string DecodeBassError(int iCode)
 	{
-		string sError;
+		std::string sError;
 		switch(iCode)
 		{
 			ENUM_TO_VALUE(BASS_OK,					"OK",														sError);
